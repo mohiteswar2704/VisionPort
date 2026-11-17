@@ -30,15 +30,12 @@ uploaded_file = st.file_uploader(
 if uploaded_file is not None:
     image = Image.open(uploaded_file)
     st.subheader("Original Image")
-    st.image(image, caption="Uploaded Traffic Image", use_column_width=True)
+    st.image(image, caption="Uploaded Traffic Image", width="stretch")
 
     results=model.predict(source=image, device=device)
 
     result_image=results[0].plot()
-    st.image(result_image, caption="Uploaded Traffic Image")
-
-st.subheader("Detection Results")
-
-st.image(result_image, caption="Detected Objects",channels="BGR", use_container_width=True)
+    st.subheader("Detection Results")
+    st.image(result_image, caption="Detected Objects", channels="BGR", use_container_width=True)
 
 
